@@ -2,6 +2,9 @@
 
 Pokemon Information Website using Nuxt 3 and TypeScript
 
+<img width="1648" alt="Screen Shot 2023-10-26 at 11 02 08 PM" src="https://github.com/marrufovic/PokeNuxt/assets/11889909/4a82a661-0287-45e0-8dc0-9fdd0df72be7">
+
+
 # Requirements
 
 Git and Node.js
