@@ -33,15 +33,18 @@ import { ref, computed } from "vue";
 
 const { id } = useRoute().params;
 
+// Create API call to get data
 const uri = "https://pokeapi.co/api/v2/pokemon/" + id;
 const { data: response } = await useFetch(uri);
 const pokemonInfo = ref(response.value);
 
+// Create API call to retrieve image
 const imageUrl = computed(
   () =>
     `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonInfo.value.id}.png`
 );
 
+// Format strings
 const formatAbilities = (abilities) => {
   return abilities
     .map((ability) => capitalizeFirstLetter(ability.ability.name))
@@ -63,9 +66,6 @@ const pokemon = computed(() => {
     abilities: info.abilities,
   };
 });
-
-console.log(imageUrl.value);
-console.log(pokemon.value);
 
 definePageMeta({
   layout: "pokemons",

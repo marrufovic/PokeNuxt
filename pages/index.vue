@@ -43,6 +43,12 @@ interface Pokemon {
   shinySpriteUrl: string;
 }
 
+interface PokemonResult {
+  name: string;
+  url: string;
+}
+
+// Filter Pokemon list base on the search query
 const filteredPokemons = computed(() => {
   const query = searchQuery.value.toLowerCase();
   return pokemons.filter((pokemon) =>
@@ -50,12 +56,14 @@ const filteredPokemons = computed(() => {
   );
 });
 
+// Fetch 60 Pokemons
 const response = await fetch(
   "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=60"
 );
 const data: { results: PokemonResult[] } = await response.json();
 const pokemonResults = data.results;
 
+// Add Pokemons to data to pokemons array
 pokemons.push(
   ...pokemonResults.map((pokemon: PokemonResult) => {
     const name = pokemon.name;
@@ -73,11 +81,6 @@ pokemons.push(
     };
   })
 );
-
-interface PokemonResult {
-  name: string;
-  url: string;
-}
 </script>
 
 <style scoped>
